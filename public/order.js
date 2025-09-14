@@ -393,7 +393,7 @@ async handleOrderSubmit() {
             items: this.cart.map(item => ({
                 product_id: item.id || item.product_id || '',
                 shop_id: item.shop_id || item.shopId || '',
-                product_name: item.name || item.product_name || item.title || 'Товар без назви', // ✅ FALLBACK
+                 product_name: item.name || item.product_name || item.title || 'Товар без назви', // 
                 price: parseFloat(item.price) || 0,
                 quantity: parseInt(item.quantity) || 1,
                 subtotal: parseFloat((item.price * item.quantity).toFixed(2)) // ДОДАНО: обов'язкове поле
@@ -450,6 +450,91 @@ async handleOrderSubmit() {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-check"></i> Підтвердити замовлення';
     }
+}
+
+// ДОДАЙТЕ ЦІ НОВІ МЕТОДИ:
+formatPostalCode(district) {
+    // Генеруємо 5-значний поштовий код або повертаємо пусту стрічку
+    const postalCodes = {
+        'Шевченківський': '01001',
+        'Печерський': '01010', 
+        'Подільський': '04070',
+        'Оболонський': '04210',
+        'Соломянський': '03110',
+        'Святошинський': '02000',
+        'Голосіївський': '03039',
+        'Дарницький': '02094',
+        'Деснянський': '02000',
+        'Дніпровський': '02094'
+    };
+    return postalCodes[district] || '';
+}
+
+validateOrderData(orderData) {
+    // Валідація email pattern
+    const emailPattern = /^\S+@\S+\.\S+$/;
+    if (!emailPattern.test(orderData.customer.email)) {
+        this.showNotification('Неправильний формат email', 'error');
+        return false;
+    }
+
+    // Валідація phone pattern
+    const phonePattern = /^\+380[0-9]{9}$/;
+    if (!phonePattern.test(orderData.customer.phone)) {
+        this.showNotification('Номер телефону має бути у форматі +380XXXXXXXXX', 'error');
+        return false;
+    }
+
+    // Валідація name maxLength
+    if (orderData.customer.name && orderData.customer.name.length > 100) {
+        this.showNotification('Ім\'я не може бути довшим за 100 символів', 'error');
+        return false;
+    }
+
+    // Валідація обов'язкових полів delivery_address
+    if (!orderData.delivery_address.street) {
+        this.showNotification('Вкажіть вулицю доставки', 'error');
+        return false;
+    }
+
+    if (!orderData.delivery_address.city) {
+        this.showNotification('Вкажіть місто доставки', 'error');
+        return false;
+    }
+
+    // Валідація postal_code pattern (5 digits або пусто)
+    if (orderData.delivery_address.postal_code && !/^[0-9]{5}$/.test(orderData.delivery_address.postal_code)) {
+        this.showNotification('Поштовий код має містити рівно 5 цифр', 'error');
+        return false;
+    }
+
+    // Валідація items
+    if (!Array.isArray(orderData.items) || orderData.items.length === 0) {
+        this.showNotification('Корзина не може бути порожньою', 'error');
+        return false;
+    }
+
+    // Валідація кожного item
+    for (const item of orderData.items) {
+        if (!item.product_name) {
+            this.showNotification('Назва товару відсутня', 'error');
+            return false;
+        }
+        if (typeof item.price !== 'number' || item.price < 0) {
+            this.showNotification('Неправильна ціна товару', 'error');
+            return false;
+        }
+        if (!Number.isInteger(item.quantity) || item.quantity < 1) {
+            this.showNotification('Неправильна кількість товару', 'error');
+            return false;
+        }
+        if (typeof item.subtotal !== 'number' || item.subtotal < 0) {
+            this.showNotification('Неправильна сума товару', 'error');
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // ДОДАЙТЕ ЦІ НОВІ МЕТОДИ:
