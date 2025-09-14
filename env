@@ -1,0 +1,3 @@
+PORT=5000
+NODE_ENV=development
+MONGODB_URI=mongodb+srv://par4di3e_db_user:cerber2003GB13@flower-delivery-cluster.8kycolo.mongodb.net/?retryWrites=true&w=majority&appName=flower-delivery-cluster
