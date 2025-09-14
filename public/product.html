@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару - FlowerDelivery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>FlowerDelivery</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Магазини</a>
+                    <a href="#" class="nav-link">Про нас</a>
+                    <a href="#" class="nav-link">Контакти</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Головна</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="index.html" id="shopBreadcrumb">Магазин</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="productBreadcrumb">Товар</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-content">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="mainImage" src="" alt="Product Image" class="main-image-img">
+                        <div class="image-overlay">
+                            <button class="zoom-btn">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="thumbnail-images" id="thumbnails">
+                        <!-- Thumbnails will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 id="productName" class="product-title">Завантаження...</h1>
+                        <div class="product-rating">
+                            <div class="rating-stars" id="productRating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">5.0 (24 відгуки)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price" id="currentPrice">0 ₴</span>
+                        <span class="old-price" id="oldPrice" style="display: none;">0 ₴</span>
+                        <span class="discount-badge" id="discountBadge" style="display: none;">-20%</span>
+                    </div>
+
+                    <div class="product-description">
+                        <p id="productDescription">Завантаження опису...</p>
+                    </div>
+
+                    <div class="product-specifications">
+                        <h3>Характеристики</h3>
+                        <div class="spec-list" id="specList">
+                            <!-- Specifications will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Кількість:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" id="decreaseBtn">-</button>
+                                <input type="number" id="quantityInput" value="1" min="1" max="99">
+                                <button class="quantity-btn" id="increaseBtn">+</button>
+                            </div>
+                            <span class="stock-info" id="stockInfo">В наявності: 0 шт.</span>
+                        </div>
+
+                        <div class="product-actions">
+                            <button class="btn btn-primary add-to-cart-btn" id="addToCartBtn">
+                                <i class="fas fa-shopping-cart"></i>
+                                Додати в кошик
+                            </button>
+                            <button class="btn btn-secondary wishlist-btn" id="wishlistBtn">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="btn btn-secondary share-btn" id="shareBtn">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="delivery-info">
+                        <div class="delivery-item">
+                            <i class="fas fa-truck"></i>
+                            <div>
+                                <strong>Безкоштовна доставка</strong>
+                                <p>При замовленні від 500 ₴</p>
+                            </div>
+                        </div>
+                        <div class="delivery-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Швидка доставка</strong>
+                                <p id="deliveryTime">30-60 хвилин</p>
+                            </div>
+                        </div>
+                        <div class="delivery-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Гарантія свіжості</strong>
+                                <p>100% гарантія або повернення коштів</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Info -->
+    <section class="shop-info-section">
+        <div class="container">
+            <div class="shop-info-card">
+                <div class="shop-avatar">
+                    <img id="shopImage" src="" alt="Shop">
+                </div>
+                <div class="shop-details">
+                    <h3 id="shopName">Завантаження...</h3>
+                    <div class="shop-rating">
+                        <div class="rating-stars" id="shopRating"></div>
+                        <span id="shopRatingText">0.0</span>
+                    </div>
+                    <p id="shopAddress">Завантаження адреси...</p>
+                </div>
+                <div class="shop-actions">
+                    <button class="btn btn-outline" id="viewShopBtn">
+                        <i class="fas fa-store"></i>
+                        Перейти в магазин
+                    </button>
+                    <button class="btn btn-outline" id="callShopBtn">
+                        <i class="fas fa-phone"></i>
+                        Зателефонувати
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products-section">
+        <div class="container">
+            <h2>Схожі товари</h2>
+            <div class="related-products-grid" id="relatedProducts">
+                <!-- Related products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>Відгуки покупців</h2>
+                <button class="btn btn-primary write-review-btn">
+                    <i class="fas fa-pen"></i>
+                    Написати відгук
+                </button>
+            </div>
+            <div class="reviews-list" id="reviewsList">
+                <!-- Sample reviews -->
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h4>Олена К.</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-date">2 дні тому</span>
+                    </div>
+                    <p class="review-text">Дуже красиві троянди! Свіжі, пахучі, доставили точно вчасно. Рекомендую!</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h4>Михайло Т.</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-date">1 тиждень тому</span>
+                    </div>
+                    <p class="review-text">Гарний букет, але упаковка могла б бути кращою. В цілому задоволений покупкою.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Zoom Modal -->
+    <div class="zoom-modal" id="zoomModal">
+        <div class="zoom-overlay"></div>
+        <div class="zoom-content">
+            <button class="close-zoom">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="zoomedImage" src="" alt="Zoomed Product">
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="product.js"></script>
+</body>
+</html>

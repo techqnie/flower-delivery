@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформлення замовлення - FlowerDelivery</title>
+    <link rel="stylesheet" href="order.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>FlowerDelivery</span>
+                </div>
+                <div class="header-actions">
+                    <button class="back-btn" onclick="window.location.href='index.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Назад до магазинів</span>
+                    </button>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="container">
+            <div class="order-header">
+                <h1>Оформлення замовлення</h1>
+                <div class="order-steps">
+                    <div class="step active">
+                        <div class="step-number">1</div>
+                        <span>Кошик</span>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <span>Доставка</span>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <span>Підтвердження</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-content">
+                <div class="order-form-section">
+                    <form id="orderForm" class="order-form">
+                        <div class="form-section">
+                            <h3>Контактна інформація</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="customerName">Ім'я та прізвище *</label>
+                                    <input type="text" id="customerName" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerPhone">Телефон *</label>
+                                    <input type="tel" id="customerPhone" name="phone" required pattern="^\+380[0-9]{9}$" placeholder="+380XXXXXXXXX">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">Email *</label>
+                                <input type="email" id="customerEmail" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Адреса доставки</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">Місто *</label>
+                                    <select id="city" name="city" required>
+                                        <option value="Київ">Київ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="district">Район</label>
+                                    <select id="district" name="district">
+                                        <option value="">Оберіть район</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="street">Вулиця та номер будинку *</label>
+                                <input type="text" id="street" name="street" required placeholder="вул. Хрещатик, 25">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="apartment">Квартира/офіс</label>
+                                    <input type="text" id="apartment" name="apartment" placeholder="кв. 15">
+                                </div>
+                                <div class="form-group">
+                                    <label for="postalCode">Поштовий індекс</label>
+                                    <input type="text" id="postalCode" name="postalCode" placeholder="01001">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryNotes">Примітки до доставки</label>
+                                <textarea id="deliveryNotes" name="notes" rows="3" placeholder="Домофон, поверх, особливі побажання..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Час доставки</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="deliveryDate">Дата доставки *</label>
+                                    <input type="date" id="deliveryDate" name="deliveryDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="deliveryTime">Бажаний час</label>
+                                    <select id="deliveryTime" name="deliveryTime">
+                                        <option value="">Будь-який час</option>
+                                        <option value="09:00-12:00">09:00 - 12:00</option>
+                                        <option value="12:00-15:00">12:00 - 15:00</option>
+                                        <option value="15:00-18:00">15:00 - 18:00</option>
+                                        <option value="18:00-21:00">18:00 - 21:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Спеціальні інструкції</h3>
+                            <div class="form-group">
+                                <textarea id="specialInstructions" name="specialInstructions" rows="4" placeholder="Особливі побажання, повідомлення одержувачу..."></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <div class="summary-card">
+                        <h3>Ваше замовлення</h3>
+                        <div class="order-items" id="orderItems">
+                            <!-- Items will be loaded here -->
+                            <div class="empty-cart" id="emptyCart" style="display: none;">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h3>Кошик порожній</h3>
+                                <p>Додайте товари для оформлення замовлення</p>
+                                <a href="index.html" class="btn btn-primary">Перейти до магазинів</a>
+                            </div>
+                        </div>
+                        <div class="order-totals" id="orderTotals">
+                            <div class="total-row">
+                                <span>Сума товарів:</span>
+                                <span id="subtotal">0 ₴</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Доставка:</span>
+                                <span id="deliveryFee">Безкоштовно</span>
+                            </div>
+                            <div class="total-row total-final">
+                                <span>До сплати:</span>
+                                <span id="totalAmount">0 ₴</span>
+                            </div>
+                        </div>
+                        <button type="submit" form="orderForm" class="place-order-btn" id="placeOrderBtn">
+                            <i class="fas fa-check"></i>
+                            Підтвердити замовлення
+                        </button>
+                        <div class="payment-methods">
+                            <small>Способи оплати:</small>
+                            <div class="payment-icons">
+                                <i class="fab fa-cc-visa" title="Visa"></i>
+                                <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                                <i class="fas fa-money-bill-wave" title="Готівка при отриманні"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Замовлення прийнято!</h2>
+            <p>Дякуємо за ваше замовлення! Ми зв'яжемося з вами найближчим часом для підтвердження деталей. Очікуйте дзвінка від нашого менеджера.</p>
+            <div class="order-number">
+                <strong>Номер замовлення: <span id="orderNumber">#ORD-2025-000001</span></strong>
+            </div>
+            <div class="order-actions">
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">
+                    <i class="fas fa-home"></i>
+                    Повернутись до магазинів
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="order.js"></script>
+</body>
+</html>
